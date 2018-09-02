@@ -1,0 +1,12 @@
+chr1, 12627, rh1, C, T
+chr1, 12657, rh2, C, G
+chr1, 13178, rh3, G, A
+chr1, 14673, rh4, G, C
+chr1, 14699, rh5, C, G
+chr1, 14809, rh6, C, A
+chr1, 14815, rh7, C, T
+chr1, 17041, rh8, G, A
+chr1, 17147, rh9, G, A
+chr1, 131351, rh10, T, C
+chr1, 132264, rh11, G, A
+chr1, 329795, rh12, A, G
