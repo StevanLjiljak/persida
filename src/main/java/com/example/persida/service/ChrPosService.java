@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 @Service
@@ -45,5 +46,22 @@ public class ChrPosService {
         fos.write(file.getBytes());
         fos.close();
         return convFile;
+    }
+
+    public ChrPos getChrAndPos(String chr, Long pos) {
+        ChrPosId chrPosId = new ChrPosId(chr, pos);
+        return chrPosRepository.findByChrPosId(chrPosId);
+    }
+
+    public List<ChrPos> getChr(String chr) {
+        return chrPosRepository.findByChrPosIdChr(chr);
+    }
+
+    public List<ChrPos> getBetweenPos(Long pos1, Long pos2) {
+        return chrPosRepository.getBetweenPos(pos1, pos2);
+    }
+
+    public List<ChrPos> getDeletion() {
+        return chrPosRepository.getDeletion();
     }
 }

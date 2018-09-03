@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity(name = "ChrPos")
+@Entity(name = "chrpos")
 @Table(name = "chrpos")
 public class ChrPos implements Serializable{
 
