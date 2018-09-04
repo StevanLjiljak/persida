@@ -10,3 +10,5 @@ chr1, 17147, rh9, G, A
 chr1, 131351, rh10, T, C
 chr1, 132264, rh11, G, A
 chr1, 329795, rh12, A, G
+chr1, 329796, rh13, D, Y
+chr1, 329797, rh14, D, Z
