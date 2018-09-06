@@ -2,7 +2,10 @@ package com.example.persida.service;
 
 import com.example.persida.model.ChrPos;
 import com.example.persida.model.ChrPosId;
+import com.example.persida.model.Gen;
+import com.example.persida.model.GenId;
 import com.example.persida.repository.ChrPosRepository;
+import com.example.persida.repository.GeneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +24,10 @@ public class ChrPosService {
     @Autowired
     public ChrPosRepository chrPosRepository;
 
-    public void uploadFile(MultipartFile file) {
+    @Autowired
+    public GeneRepository geneRepository;
+
+    public void uploadVariantFile(MultipartFile file) {
 
         ChrPosId chrPosId;
         ChrPos chrPos;
@@ -33,6 +39,23 @@ public class ChrPosService {
                 chrPosId = new ChrPosId(columns[0].trim(), Long.parseLong(columns[1].trim()));
                 chrPos = new ChrPos(chrPosId, columns[2].trim(), columns[3].trim(), columns[4].trim());
                 chrPosRepository.save(chrPos);
+            }
+        } catch (IOException e){
+            System.out.println(e);
+        }
+    }
+
+    public void uploadGeneFile(MultipartFile file) {
+        GenId genId;
+        Gen gen;
+
+        try{
+            Scanner scanner = new Scanner(this.convert(file));
+            while (scanner.hasNext()) {
+                String[] columns = scanner.nextLine().split(",");
+                genId = new GenId(columns[0].trim(), Long.parseLong(columns[1].trim()));
+                gen = new Gen(genId, Long.parseLong(columns[2].trim()), columns[3].trim());
+                geneRepository.save(gen);
             }
         } catch (IOException e){
             System.out.println(e);
@@ -64,4 +87,9 @@ public class ChrPosService {
     public List<ChrPos> getDeletion() {
         return chrPosRepository.getDeletion();
     }
+
+    public List<ChrPos> getVariantsPerGene(String gene) {
+        return chrPosRepository.getVariantsPerGene(gene);
+    }
+
 }
