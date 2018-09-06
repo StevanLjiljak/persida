@@ -1,14 +1,15 @@
-chr1, 12627, rh1, C, T
-chr1, 12657, rh2, C, G
-chr1, 13178, rh3, G, A
-chr1, 14673, rh4, G, C
-chr1, 14699, rh5, C, G
-chr1, 14809, rh6, C, A
-chr1, 14815, rh7, C, T
-chr1, 17041, rh8, G, A
-chr1, 17147, rh9, G, A
-chr1, 131351, rh10, T, C
-chr1, 132264, rh11, G, A
-chr1, 329795, rh12, A, G
-chr1, 329796, rh13, D, Y
-chr1, 329797, rh14, D, Z
+chr1,12783,1,G,A
+chr1,13116,2,T,G
+chr1,13116,3,TGA,GGG
+chr1,13118,4,A,G
+chr1,13302,5,C,T
+chr1,13656,6,CAGG,CG
+chr1,14653,7,C,T
+chr1,14673,8,G,C
+chr1,14677,9,G,A
+chr1,14699,10,C,G
+chr1,14907,11,A,G
+chr1,129285,12,G,A
+chr1,135982,13,A,G
+chr1,136048,14,C,T
+chr1,137825,15,G,A
