@@ -2,6 +2,8 @@ package com.example.persida.service;
 
 import com.example.persida.model.ChrPos;
 import com.example.persida.model.ChrPosId;
+import com.example.persida.model.Gen;
+import com.example.persida.model.GenId;
 import com.example.persida.repository.ChrPosRepository;
 import com.example.persida.repository.GenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ public class ChrPosService {
 
     @Autowired
     public ChrPosRepository chrPosRepository;
+
 
     @Autowired
     public GenRepository genRepository;
@@ -54,8 +57,8 @@ public class ChrPosService {
             while (scanner.hasNext()) {
                 String[] columns = scanner.nextLine().split(",");
                 genId = new GenId(columns[0].trim(), Long.parseLong(columns[1].trim()));
-                gen = new Gen(genId, columns[2].trim(), columns[3].trim(), columns[4].trim());
-                chrPosRepository.save(gen);
+                gen = new Gen(genId, Long.parseLong(columns[2].trim()), columns[3].trim());
+                genRepository.save(gen);
             }
         } catch (IOException e){
             System.out.println(e);
