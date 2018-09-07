@@ -40,9 +40,7 @@ public interface ChrPosRepository extends JpaRepository<ChrPos, ChrPosId> {
             " having count(cp1.alt) = 1")
     public List<ChrPos> getDeletion();
 
-    @Query("from chrpos cp " +
-           "inner join gen g with g.genId.chr = cp.chrPosId.chr and cp.chrPosId.pos >= g.genId.beg and cp.chrPosId.pos <= g.end " +
-           "where g.gene like :gene ")
-    public List<ChrPos> getVariantsPerGene(@Param("gene") String gene);
 
+    @Query("from chrpos")
+    public List<ChrPos> getVariant(String gen);
 }

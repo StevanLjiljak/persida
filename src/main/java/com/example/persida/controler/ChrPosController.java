@@ -2,7 +2,6 @@ package com.example.persida.controler;
 
 import com.example.persida.file.UploadFileResponse;
 import com.example.persida.model.ChrPos;
-import com.example.persida.model.Gen;
 import com.example.persida.service.ChrPosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -35,22 +34,6 @@ public class ChrPosController {
                 file.getContentType(), file.getSize());
     }
 
-    @PostMapping("/uploadGeneFile")
-    public UploadFileResponse uploadGeneFile(@RequestParam("file") MultipartFile file) {
-
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/uploadGeneFile/")
-                .path(fileName)
-                .toUriString();
-
-        chrPosService.uploadGeneFile(file);
-
-        return new UploadFileResponse(fileName, fileDownloadUri,
-                file.getContentType(), file.getSize());
-    }
-
     @GetMapping("/getchrandpos/{chr}/{pos}")
     public ChrPos getChrAndPos(@PathVariable("chr") String chr, @PathVariable("pos") Long pos) {
         return chrPosService.getChrAndPos(chr, pos);
@@ -71,9 +54,8 @@ public class ChrPosController {
         return chrPosService.getDeletion();
     }
 
-    @GetMapping("/getVariantsPerGene/{gene}")
-    public List<ChrPos> getVariantsPerGene(@PathVariable("gene") String gene) {
-        return chrPosService.getVariantsPerGene(gene);
+    @GetMapping("/getVariant/{gene}")
+    public List<ChrPos> getByGeneName(@PathVariable("gene") String gene){
+        return chrPosService.getVariant(gene);
     }
-
 }

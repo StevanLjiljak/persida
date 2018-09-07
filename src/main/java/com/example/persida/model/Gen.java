@@ -3,26 +3,25 @@ package com.example.persida.model;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 @Entity(name = "gen")
 @Table(name = "gen")
-public class Gen implements Serializable {
+public class Gen {
 
     @EmbeddedId
     public GenId genId;
 
     public Long end;
-
     public String gene;
 
     public Gen(){
-    }
 
-    public Gen(GenId genId, Long end, String gene) {
-        this.genId = genId;
-        this.end = end;
-        this.gene = gene;
+    }
+    public Gen(GenId genId, Long end, String gene){
+
+        this.genId=genId;
+        this.end=end;
+        this.gene=gene;
     }
 
     public GenId getGenId() {

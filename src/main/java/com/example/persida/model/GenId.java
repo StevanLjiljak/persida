@@ -2,20 +2,20 @@ package com.example.persida.model;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
-public class GenId implements Serializable{
+public class GenId implements Serializable {
 
-    public String chr;
-
-    public Long beg;
+    private String chr;
+    private Long beg;
 
     public GenId(){
-    }
 
-    public GenId(String chr, Long beg) {
-        this.chr = chr;
-        this.beg = beg;
+    }
+    public GenId(String chr, Long beg){
+        this.chr=chr;
+        this.beg=beg;
     }
 
     public String getChr() {
@@ -37,18 +37,14 @@ public class GenId implements Serializable{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof GenId)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         GenId genId = (GenId) o;
-
-        if (!getChr().equals(genId.getChr())) return false;
-        return getBeg().equals(genId.getBeg());
+        return Objects.equals(chr, genId.chr) &&
+                Objects.equals(beg, genId.beg);
     }
 
     @Override
     public int hashCode() {
-        int result = getChr().hashCode();
-        result = 31 * result + getBeg().hashCode();
-        return result;
+        return Objects.hash(chr, beg);
     }
 }
