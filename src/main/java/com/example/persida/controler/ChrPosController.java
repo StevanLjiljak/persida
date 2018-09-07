@@ -34,23 +34,6 @@ public class ChrPosController {
                 file.getContentType(), file.getSize());
     }
 
-    @PostMapping("/uploadGeneFile")
-    public UploadFileResponse uploadGeneFile(@RequestParam("file") MultipartFile file) {
-
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/uploadGeneFile/")
-                .path(fileName)
-                .toUriString();
-
-        chrPosService.uploadGeneFile(file);
-
-        return new UploadFileResponse(fileName, fileDownloadUri,
-                file.getContentType(), file.getSize());
-    }
-
-
     @GetMapping("/getchrandpos/{chr}/{pos}")
     public ChrPos getChrAndPos(@PathVariable("chr") String chr, @PathVariable("pos") Long pos) {
         return chrPosService.getChrAndPos(chr, pos);
@@ -71,5 +54,8 @@ public class ChrPosController {
         return chrPosService.getDeletion();
     }
 
-
+    @GetMapping("/getVariant/{gene}")
+    public List<ChrPos> getByGeneName(@PathVariable("gene") String gene){
+        return chrPosService.getVariant(gene);
+    }
 }

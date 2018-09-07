@@ -40,4 +40,7 @@ public interface ChrPosRepository extends JpaRepository<ChrPos, ChrPosId> {
             " having count(cp1.alt) = 1")
     public List<ChrPos> getDeletion();
 
+
+    @Query("from chrpos")
+    public List<ChrPos> getVariant(String gen);
 }
