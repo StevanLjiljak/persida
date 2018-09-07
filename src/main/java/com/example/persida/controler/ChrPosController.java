@@ -2,7 +2,6 @@ package com.example.persida.controler;
 
 import com.example.persida.file.UploadFileResponse;
 import com.example.persida.model.ChrPos;
-import com.example.persida.model.Gen;
 import com.example.persida.service.ChrPosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -51,6 +50,7 @@ public class ChrPosController {
                 file.getContentType(), file.getSize());
     }
 
+
     @GetMapping("/getchrandpos/{chr}/{pos}")
     public ChrPos getChrAndPos(@PathVariable("chr") String chr, @PathVariable("pos") Long pos) {
         return chrPosService.getChrAndPos(chr, pos);
@@ -71,9 +71,5 @@ public class ChrPosController {
         return chrPosService.getDeletion();
     }
 
-    @GetMapping("/getVariantsPerGene/{gene}")
-    public List<ChrPos> getVariantsPerGene(@PathVariable("gene") String gene) {
-        return chrPosService.getVariantsPerGene(gene);
-    }
 
 }
